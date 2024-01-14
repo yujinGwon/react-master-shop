@@ -1,11 +1,11 @@
 import "./App.css";
-import { Button, Navbar, Container, Nav } from "react-bootstrap";
+import { Navbar, Container, Nav } from "react-bootstrap";
 import bg from "./img/bg.png";
 import { useState } from "react";
 import data from "./data.js";
 import img from "./image.js";
 import Shoes from "./shoes.js";
-
+import { Routes, Route, Link } from "react-router-dom";
 
 function App() {
   let [shoes] = useState(data);
@@ -22,19 +22,33 @@ function App() {
           </Nav>
         </Container>
       </Navbar>
-      <div
-        className="main-bg"
-        style={{ backgroundImage: "url(" + bg + ")" }}
-      ></div>
-      <div className="container">
-        <div className="row">
 
-          {shoes.map((shoe, index) => (
-            <Shoes key={index} shoe={shoe} image={images[index]} />
-          ))}
+      <Link to="/">홈</Link>
+      <Link to="/detail">상세페이지</Link>
 
-        </div>
-      </div>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <div>
+              <>
+                <div
+                  className="main-bg"
+                  style={{ backgroundImage: "url(" + bg + ")" }}
+                ></div>
+                <div className="container">
+                  <div className="row">
+                    {shoes.map((shoe, index) => (
+                      <Shoes key={index} shoe={shoe} image={images[index]} />
+                    ))}
+                  </div>
+                </div>
+              </>
+            </div>
+          }
+        />
+        <Route path="/detail" element={<div>상세페이지임</div>} />
+      </Routes>
     </div>
   );
 }
