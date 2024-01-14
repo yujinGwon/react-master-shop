@@ -4,8 +4,10 @@ import bg from "./img/bg.png";
 import { useState } from "react";
 import data from "./data.js";
 import img from "./image.js";
-import Shoes from "./shoes.js";
+import Shoes from "./components/shoes.js";
 import { Routes, Route, Link } from "react-router-dom";
+import Detail from "./components/detail.js";
+import Main from "./components/main.js";
 
 function App() {
   let [shoes] = useState(data);
@@ -29,25 +31,9 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={
-            <div>
-              <>
-                <div
-                  className="main-bg"
-                  style={{ backgroundImage: "url(" + bg + ")" }}
-                ></div>
-                <div className="container">
-                  <div className="row">
-                    {shoes.map((shoe, index) => (
-                      <Shoes key={index} shoe={shoe} image={images[index]} />
-                    ))}
-                  </div>
-                </div>
-              </>
-            </div>
-          }
+          element={<Main bg={bg} shoes={shoes} images={images} />}
         />
-        <Route path="/detail" element={<div>상세페이지임</div>} />
+        <Route path="/detail" element={<Detail />} />
       </Routes>
     </div>
   );
