@@ -1,10 +1,11 @@
-function Detail() {
+function Detail(props) {
   return (
     <div className="container">
       <div className="row">
         <div className="col-md-6">
           <img
             src="https://codingapple1.github.io/shop/shoes1.jpg"
+            alt=""
             width="100%"
           />
         </div>

@@ -4,10 +4,10 @@ import bg from "./img/bg.png";
 import { useState } from "react";
 import data from "./data.js";
 import img from "./image.js";
-import Shoes from "./components/shoes.js";
+
 import { Routes, Route, Link } from "react-router-dom";
-import Detail from "./components/detail.js";
-import Main from "./components/main.js";
+import Detail from "./components/Detail.js";
+import Main from "./components/Main.js";
 
 function App() {
   let [shoes] = useState(data);

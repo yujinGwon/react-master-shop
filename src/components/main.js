@@ -1,4 +1,4 @@
-import Shoes from "../components/shoes.js";
+import Shoes from "../components/Shoes.js";
 
 function Main(props) {
   return (
