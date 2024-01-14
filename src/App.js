@@ -3,11 +3,13 @@ import { Button, Navbar, Container, Nav } from "react-bootstrap";
 import bg from "./img/bg.png";
 import { useState } from "react";
 import data from "./data.js";
+import img from "./image.js";
 import Shoes from "./shoes.js";
+
 
 function App() {
   let [shoes] = useState(data);
-  console.log(shoes[0].price);
+  let [images] = useState(img);
 
   return (
     <div className="App">
@@ -27,7 +29,7 @@ function App() {
       <div className="container">
         <div className="row">
 
-          <Shoes></Shoes>
+          <Shoes shoes={shoes} images={images}></Shoes>
 
           <div className="col-md-4">
             <img
