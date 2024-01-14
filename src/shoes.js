@@ -1,14 +1,13 @@
-
 function Shoes(props) {
   return (
-    <div className="col-md-4">
-      {/* <img src={process.env.PUBLIC_URL + "/logo192.png"} width="80%" /> */}
-      <img
-        src={props.images[0].src}
-        width="80%"
-      />
-      <h4>{props.shoes[0].title}</h4>
-      <p>{props.shoes[0].content}</p>
+    <div className="row">
+      {props.shoes.map((shoe, index) => (
+        <div className="col-md-4" key={index}>
+          <img src={props.images[index].src} width="80%" alt={`Shoe ${index + 1}`} />
+          <h4>{shoe.title}</h4>
+          <p>{shoe.content}</p>
+        </div>
+      ))}
     </div>
   );
 }
