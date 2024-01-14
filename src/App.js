@@ -29,7 +29,9 @@ function App() {
       <div className="container">
         <div className="row">
 
-          <Shoes shoes={shoes} images={images}></Shoes>
+          {shoes.map((shoe, index) => (
+            <Shoes key={index} shoe={shoe} image={images[index]} />
+          ))}
 
         </div>
       </div>
