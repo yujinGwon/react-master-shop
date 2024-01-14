@@ -3,6 +3,7 @@ import { Button, Navbar, Container, Nav } from "react-bootstrap";
 import bg from "./img/bg.png";
 import { useState } from "react";
 import data from "./data.js";
+import Shoes from "./shoes.js";
 
 function App() {
   let [shoes] = useState(data);
@@ -26,15 +27,7 @@ function App() {
       <div className="container">
         <div className="row">
 
-          <div className="col-md-4">
-            {/* <img src={process.env.PUBLIC_URL + "/logo192.png"} width="80%" /> */}
-            <img
-              src="https://codingapple1.github.io/shop/shoes1.jpg"
-              width="80%"
-            />
-            <h4>{shoes[0].title}</h4>
-            <p>{shoes[0].content}</p>
-          </div>
+          <Shoes></Shoes>
 
           <div className="col-md-4">
             <img
