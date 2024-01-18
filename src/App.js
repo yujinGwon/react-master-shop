@@ -43,7 +43,9 @@ function App() {
           path="/"
           element={<Main bg={bg} shoes={shoes} images={images} />}
         />
-        <Route path="/detail" element={<Detail />} />
+
+        <Route path="/detail/:id" element={<Detail shoes={shoes} />} />
+
         {/* <Route path="*" element={<div>없는페이지요</div>} /> */}
         <Route path="/about" element={<About />}>
           <Route path="member" element={<div>멤버임</div>} />
