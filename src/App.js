@@ -5,7 +5,7 @@ import { useState } from "react";
 import data from "./data.js";
 import img from "./image.js";
 
-import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
+import { Routes, Route, useNavigate, Outlet } from "react-router-dom";
 import Detail from "./routes/Detail.js";
 import Main from "./components/Main.js";
 

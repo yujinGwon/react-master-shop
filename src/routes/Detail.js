@@ -3,18 +3,18 @@ import styled from "styled-components";
 
 let YellowBtn = styled.button`
   background: ${(props) => props.bg};
-  color: ${(props) => (props.bg == "blue" ? "white" : "black")};
+  color: ${(props) => (props.bg === "blue" ? "white" : "black")};
   padding: 10px;
 `;
 
-let Box = styled.div`
-  background: grey;
-  padding: 20px;
-`;
+// let Box = styled.div`
+//   background: grey;
+//   padding: 20px;
+// `;
 
-let NewBtn = styled.button(YellowBtn)`
-  
-`;
+// let NewBtn = styled.button(YellowBtn)`
+
+// `;
 
 function Detail(props) {
   let { id } = useParams();
