@@ -4,9 +4,13 @@ import { useParams } from "react-router-dom";
 function Detail(props) {
   // useEffect 안에 있는 내용은 html 렌더링 후에 동작
   // 주로 어려운 연산, 서버에서 데이터가져오는 작업, 타이머 장착하는거 등
-  useEffect(() => {});
 
-  setTimeout(() => {}, 1000);
+  let [alert, setAlert] = useState(true);
+
+  useEffect(() => {});
+  setTimeout(() => {
+    setAlert(false);
+  }, 2000);
 
   let [count, setCount] = useState(0);
 
@@ -15,15 +19,17 @@ function Detail(props) {
 
   return (
     <div className="container">
-      <div className="alert alert-warning">2초이내 구매시 할인</div>
-      {count}
+      {alert == true ? (
+        <div className="alert alert-warning">2초이내 구매시 할인</div>
+      ) : null}
+      {/* {count}
       <button
         onClick={() => {
           setCount(count + 1);
         }}
       >
         버튼
-      </button>
+      </button> */}
       <div className="row">
         <div className="col-md-6">
           <img src={찾은상품.image} alt="" width="100%" />
