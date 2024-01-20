@@ -8,26 +8,28 @@ function Detail(props) {
   let [count, setCount] = useState(0);
   let [alert, setAlert] = useState(true);
 
+  let [num, setNum] = useState("");
+  let [error, setError] = useState(false);
+
   useEffect(() => {
-    let a = setTimeout(() => {
-      setAlert(false);
-    }, 2000);
-    console.log(2);
-    return () => {
-      // useEffect 동작 전에 실행된다.
-      // 기존 코드 치우는거 많이 작성함.
-      // 예를들면, 기존 타이머는 제거해주세요.
-      // 마운트 될 때는 실행되지 않고, 언마운트시 실행됨.
-      console.log(1);
-      clearTimeout(a);
-    };
-  }, []);
+    if (isNaN(num) == true) {
+      setError(true);
+    } else {
+      setError(false);
+    }
+  }, [num]);
 
   let { id } = useParams();
   let 찾은상품 = props.shoes.find((x) => x.id == id);
 
   return (
     <div className="container">
+      <input
+        onChange={(e) => {
+          setNum(e.target.value);
+        }}
+      />
+      {error && <p style={{ color: "red" }}>유효한 숫자를 입력해주세요</p>}
       {alert == true ? (
         <div className="alert alert-warning">2초이내 구매시 할인</div>
       ) : null}
