@@ -21,8 +21,7 @@ function Main(props) {
             .get("https://codingapple1.github.io/shop/data2.json")
             .then((result) => {
               console.log(result.data);
-              let copy = [...props.shoes];
-              copy = [...props.shoes, ...result.data];
+              let copy = [...props.shoes, ...result.data];
               props.setShoes(copy);
             })
             .catch(() => {

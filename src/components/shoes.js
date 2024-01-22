@@ -9,7 +9,9 @@ function Shoes(props) {
         onClick={() => {
           navigate(`/detail/${props.shoe.id}`);
         }}
-        src={props.image?.src}
+        src={`https://codingapple1.github.io/shop/shoes${
+          props.shoe.id + 1
+        }.jpg`}
         width="80%"
         alt={`Shoe ${props.shoe.id}`}
       />
