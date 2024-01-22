@@ -9,7 +9,7 @@ function Shoes(props) {
         onClick={() => {
           navigate(`/detail/${props.shoe.id}`);
         }}
-        src={props.image.src}
+        src={props.image?.src}
         width="80%"
         alt={`Shoe ${props.shoe.id}`}
       />

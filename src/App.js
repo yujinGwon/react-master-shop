@@ -10,7 +10,7 @@ import Detail from "./routes/Detail.js";
 import Main from "./components/Main.js";
 
 function App() {
-  let [shoes] = useState(data);
+  let [shoes, setShoes] = useState(data);
   let [images] = useState(img);
   let navigate = useNavigate();
 
@@ -41,7 +41,9 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={<Main bg={bg} shoes={shoes} images={images} />}
+          element={
+            <Main bg={bg} shoes={shoes} setShoes={setShoes} images={images} />
+          }
         />
 
         <Route path="/detail/:id" element={<Detail shoes={shoes} />} />
