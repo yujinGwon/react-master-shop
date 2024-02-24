@@ -78,14 +78,8 @@ function Detail(props) {
   );
 }
 
-function TabContent(props) {
-  if (props.탭 == 0) {
-    return <div>내용0</div>;
-  } else if (props.탭 == 1) {
-    return <div>내용1</div>;
-  } else if (props.탭 == 2) {
-    return <div>내용2</div>;
-  }
+function TabContent({ 탭 }) {
+  return [<div>내용0</div>, <div>내용1</div>, <div>내용2</div>][탭];
 }
 
 export default Detail;
