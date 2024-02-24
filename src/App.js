@@ -1,7 +1,7 @@
 import "./App.css";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import bg from "./img/bg.png";
-import { useState } from "react";
+import { createContext, useState } from "react";
 import data from "./data.js";
 import img from "./image.js";
 
@@ -9,8 +9,11 @@ import { Routes, Route, useNavigate, Outlet } from "react-router-dom";
 import Detail from "./routes/Detail.js";
 import Main from "./components/Main.js";
 
+export let Context1 = createContext();
+
 function App() {
   let [shoes, setShoes] = useState(data);
+  let [재고] = useState([10, 11, 12]);
   let [images] = useState(img);
   let navigate = useNavigate();
 
@@ -46,7 +49,14 @@ function App() {
           }
         />
 
-        <Route path="/detail/:id" element={<Detail shoes={shoes} />} />
+        <Route
+          path="/detail/:id"
+          element={
+            <Context1.Provider value={{ 재고, shoes }}>
+              <Detail shoes={shoes} />
+            </Context1.Provider>
+          }
+        />
 
         {/* <Route path="*" element={<div>없는페이지요</div>} /> */}
         <Route path="/about" element={<About />}>

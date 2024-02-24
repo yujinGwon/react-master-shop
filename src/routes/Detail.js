@@ -1,8 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Nav } from "react-bootstrap";
 
+import { Context1 } from "./../App.js";
+
 function Detail(props) {
+  let { 재고, shoes } = useContext(Context1);
+
   // useEffect 안에 있는 내용은 html 렌더링 후에 동작
   // 주로 어려운 연산, 서버에서 데이터가져오는 작업, 타이머 장착하는거 등
 
@@ -46,6 +50,7 @@ function Detail(props) {
       {alert == true ? (
         <div className="alert alert-warning">2초이내 구매시 할인</div>
       ) : null}
+
       {count}
       <button
         onClick={() => {
@@ -91,6 +96,7 @@ function Detail(props) {
 
 function TabContent({ 탭 }) {
   let [fade, setFade] = useState("");
+  let { 재고 } = useContext(Context1);
 
   useEffect(() => {
     let a = setTimeout(() => {
@@ -105,7 +111,7 @@ function TabContent({ 탭 }) {
 
   return (
     <div className={`start ${fade}`}>
-      {[<div>내용0</div>, <div>내용1</div>, <div>내용2</div>][탭]}
+      {[<div>{재고}</div>, <div>내용1</div>, <div>내용2</div>][탭]}
     </div>
   );
 }
