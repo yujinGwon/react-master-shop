@@ -8,8 +8,10 @@ import img from "./image.js";
 import { Routes, Route, useNavigate, Outlet } from "react-router-dom";
 import Detail from "./routes/Detail.js";
 import Main from "./components/Main.js";
+import Cart from "./routes/Cart.js";
 
 export let Context1 = createContext();
+
 
 function App() {
   let [shoes, setShoes] = useState(data);
@@ -63,6 +65,8 @@ function App() {
           <Route path="member" element={<div>멤버임</div>} />
           <Route path="location" element={<div>위치임</div>} />
         </Route>
+
+        <Route path="/cart" element={ <Cart />} />
       </Routes>
     </div>
   );
