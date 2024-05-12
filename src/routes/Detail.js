@@ -1,8 +1,9 @@
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Nav } from "react-bootstrap";
-
 import { Context1 } from "./../App.js";
+import { addItem } from "../store.js";
+import { useDispatch } from "react-redux";
 
 function Detail(props) {
   let { 재고, shoes } = useContext(Context1);
@@ -16,6 +17,7 @@ function Detail(props) {
   let [num, setNum] = useState("");
   let [error, setError] = useState(false);
   let [탭, 탭변경] = useState(0);
+  let dispatch = useDispatch();
 
   let [fade2, setFade2] = useState("");
 
@@ -67,7 +69,9 @@ function Detail(props) {
           <h4 className="pt-5">{찾은상품.title}</h4>
           <p>{찾은상품.content}</p>
           <p>{찾은상품.price}</p>
-          <button className="btn btn-danger">주문하기</button>
+          <button className="btn btn-danger" onClick={()=>{
+            dispatch(addItem({id: id++, name: 찾은상품.title, count: 1}))
+          }} >주문하기</button>
         </div>
       </div>
 
