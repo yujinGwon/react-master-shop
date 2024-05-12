@@ -37,7 +37,7 @@ function App() {
                 navigate("/detail");
               }}
             >
-              Cart
+              Detail
             </Nav.Link>
           </Nav>
         </Container>
