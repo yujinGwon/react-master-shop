@@ -1,7 +1,7 @@
 import "./App.css";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import bg from "./img/bg.png";
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import data from "./data.js";
 import img from "./image.js";
 
@@ -9,19 +9,34 @@ import { Routes, Route, useNavigate, Outlet } from "react-router-dom";
 import Detail from "./routes/Detail.js";
 import Main from "./components/Main.js";
 import Cart from "./routes/Cart.js";
+import axios from "axios";
+import { useQuery } from "react-query";
 
 export let Context1 = createContext();
 
 
 function App() {
+
+  useEffect(()=>{
+    localStorage.setItem('watched', JSON.stringify([]))
+  },[])
+
   let [shoes, setShoes] = useState(data);
   let [재고] = useState([10, 11, 12]);
   let [images] = useState(img);
   let navigate = useNavigate();
 
+  let result = useQuery('작명', ()=>
+    axios.get('https://codingapple1.github.io/userdata.json').then((a)=>{
+      console.log('요청됨')
+      return a.data
+    })
+  )
+
   return (
     <div className="App">
-      <Navbar bg="dark" data-bs-theme="dark">
+
+      <Navbar bg="light" data-bs-theme="light">
         <Container>
           <Navbar.Brand href="#home">ShoeShop</Navbar.Brand>
           <Nav className="me-auto">
@@ -40,6 +55,12 @@ function App() {
               Cart
             </Nav.Link>
           </Nav>
+          <Nav className="ms-auto">
+            { result.isLoading && '로딩중' }
+            { result.error && '에러남' }
+            { result.data && result.data.name }
+          </Nav>
+          
         </Container>
       </Navbar>
 
